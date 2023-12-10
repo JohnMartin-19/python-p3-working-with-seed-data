@@ -20,3 +20,18 @@ mk8 = Game(title="Mario Kart 8", platform="Switch", genre="Racing", price=50)
 ccs = Game(title="Candy Crush Saga", platform="Mobile", genre="Puzzle", price=0)
 session.bulk_save_objects([botw, ffvii, mk8])
 session.commit()
+
+#to generate random data
+print("Seeding games...")
+
+games = [
+    Game(
+        title=fake.name(),
+        genre=fake.word(),
+        platform=fake.word(),
+        price=random.randint(0, 60)
+    )
+for i in range(50)]
+
+session.bulk_save_objects(games)
+session.commit()
